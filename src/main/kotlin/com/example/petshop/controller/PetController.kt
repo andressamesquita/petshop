@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 class PetController (val petService: PetService) {
 
     @PostMapping
-    fun cadastrar(pet: Pet): Pet {
+    fun cadastrar(@RequestBody pet: Pet): Pet {
         val novoPet = petService.cadastrar(pet)
         return novoPet
     }
