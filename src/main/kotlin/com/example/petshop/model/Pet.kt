@@ -1,18 +1,17 @@
 package com.example.petshop.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
 class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
-    val dono: String? = null
-    val idade: Int? = null
-    val tipo: String? = null
-    val genero: String? = null
-    val raca: String? = null
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name ="dono_id")
+    var dono: Dono? = null
+    var idade: Int? = null
+    var tipo: String? = null
+    var genero: String? = null
+    var raca: String? = null
 }
